@@ -1,15 +1,25 @@
 import numpy as np
 
 class neurons:
+    count=0
+ 
     def __init__(self):
         self._inpt=None
-        self.bias=None
+        self._bias=None
         self._weight=None
         self._output=None
         
     @property
     def inpt(self):
         return self._inpt
+    
+    @property
+    def bias(self):
+        return self._bias 
+    
+    @bias.setter
+    def bias(self,value):
+        self._bias=value
 
     @inpt.setter
     def inpt(self,value):
@@ -26,11 +36,34 @@ class neurons:
     @property
     def output(self):
         return np.dot(self._inpt,self._weight)+self.bias
+    
+inputs=[1,2,3,2.5]
+
 
 n1=neurons()
 n1.bias=2
-n1.inpt=[1,2,3]
-n1.weight=[0.2,0.3,0.8]
+n1.inpt=inputs
+n1.weight=[0.2,0.8,-0.5,1]
 
-print(n1.output)
+n2=neurons()
+n2.bias=3
+n2.inpt=inputs
+n2.weight=[0.5,-0.91,0.26,-0.5]
+
+
+n3=neurons()
+n3.bias=0.5
+n3.inpt=inputs
+n3.weight=[-0.26,-0.27,0.17,0.87]
+
+n_layer_outpt=np.array([n1.output,n2.output,n3.output])
+
+
+print(n_layer_outpt)
+    
+
+# output=[]
+
+# print(n1.output)
+# print(neurons.count)
 
